@@ -102,7 +102,7 @@ const createInitialAdmin = async () => {
     
     if (!adminExists) {
       const admin = new User({
-        name: 'Admin User',
+        name: 'Tulsibhai Patel',
         email: process.env.ADMIN_EMAIL || 'admin@example.com',
         password: process.env.ADMIN_PASSWORD || 'adminPassword123',
         role: 'admin',
