@@ -11,6 +11,7 @@ import UserProfile from './components/profile/UserProfile';
 import UserManagement from './components/admin/UserManagement';
 import AdminProductList from './components/admin/AdminProductList';
 import VerifyEmail from './components/VerifyEmail';
+import VerifyOTP from './components/VerifyOTP';
 import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/verify-email" element={<VerifyEmail />} />
+              {/* <Route path='/verify-otp' element={<VerifyOTP />} /> */}
               <Route
                 path="/"
                 element={

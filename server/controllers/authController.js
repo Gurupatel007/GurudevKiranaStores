@@ -117,7 +117,24 @@ exports.createAdmin = async (req, res) => {
 exports.verifyEmail = async (req, res) => {
     try {
         const { token } = req.params;
-        await User.verifyEmailToken(token);
+        // await User.verifyEmailToken(token);
+        const userdata = await User.findOne({ verificationToken: token});
+
+        if(!userdata){
+            return res.status(400).json({ message: 'Invalid or expired token' });
+        }
+
+        const currentTime = new Date();
+        const tokenTime = new Date(userdata.verificationTokenExpires);
+        if(currentTime > tokenTime){
+            return res.status(400).json({ message: 'Invalid or expired token' });
+        }
+
+        userdata.isEmailVerified = true;
+        userdata.verificationToken = undefined;
+        userdata.verificationTokenExpires = undefined;
+        await userdata.save();
+        
         res.status(200).json({ message: 'Email verified successfully' });
     } catch (error) {
         res.status(400).json({ message: 'Invalid or expired token' });
