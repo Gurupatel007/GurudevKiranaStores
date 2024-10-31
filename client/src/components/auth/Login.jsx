@@ -13,11 +13,7 @@ const Login = () => {
     try {
       const role = await login(credentials);
       console.log(role);
-      if (role === 'admin') {
-        navigate('/admin/products');
-      } else {
-        navigate('/');
-      }
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }

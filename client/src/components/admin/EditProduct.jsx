@@ -329,7 +329,7 @@ const EditProduct = () => {
                 <img 
                   src={formData.imageUrl} 
                   alt={formData.name} 
-                  className="h-16 w-16 object-cover rounded-lg border"
+                  className="h-16 w-16 object-contain rounded-lg border"
                 />
               )}
             </div>
